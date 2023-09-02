@@ -22,17 +22,23 @@ function getRender() {
     conteinerElement.innerHTML = blokHtml
 
     const buttonElements = document.getElementsByName("radios");
-    const buttonStart = document.querySelector(".buttonStart");
+    const buttonStart = document.querySelector(".button-start");
     console.log(buttonElements);
-    for (const buttonElement of buttonElements) {
-        
-        buttonElement.addEventListener('click', () => {
+
+    buttonStart.addEventListener("click", () => {
+
+        for (const buttonElement of buttonElements) {
             if (buttonElement.checked) {
-                alert(buttonElement.value)
+                gameLavel = buttonElement.value
+                console.log(gameLavel);
+                alert(gameLavel)
             }
             console.log("hello");
-        })
-    }
+
+        }
+    })
+
+
 }
 
 
