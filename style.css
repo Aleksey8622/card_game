@@ -17,6 +17,10 @@ a {
 
 body {
     font-family: "StratosSkyeng", sans-serif;
+    background: #004980;
+    height: 100vh;
+    display: flex;
+
 
 }
 
@@ -31,7 +35,9 @@ body {
     align-items: center;
     padding-top: 158px;
     padding-bottom: 157px;
-    background: #004980;
+
+
+
 
 }
 
@@ -74,11 +80,8 @@ body {
 
 
 .radio-button {
-    display: flex;
     width: 97px;
     height: 98px;
-    flex-direction: column;
-    justify-content: center;
     flex-shrink: 0;
     color: #0080C1;
     text-align: center;
@@ -110,4 +113,8 @@ body {
     border-radius: 12px;
     background: var(--salad-60, #7AC100);
 
+}
+
+.color {
+    background: #7AC100;
 }
