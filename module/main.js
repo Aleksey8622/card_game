@@ -1,11 +1,9 @@
-import { getRenderLevel } from "./level-game.js";
+import { getRenderLevel } from './level-game.js'
 
-const conteinerElement = document.querySelector(".app-game");
-let gameLavel = ""
-
+const conteinerElement = document.querySelector('.app-game')
+let gameLavel = ''
 
 export function getRender() {
-
     let blokHtml = `           <div class="container center">
     <div class="box">
         <div class="title">Выбери сложность</div>
@@ -25,24 +23,19 @@ export function getRender() {
 
     conteinerElement.innerHTML = blokHtml
 
-    const buttonElements = document.getElementsByName("radios");
-    const buttonStart = document.querySelector(".button-start");
-    console.log(buttonElements);
+    const buttonElements = document.getElementsByName('radios')
+    const buttonStart = document.querySelector('.button-start')
+    console.log(buttonElements)
 
-    buttonStart.addEventListener("click", () => {
-
+    buttonStart.addEventListener('click', () => {
         for (const buttonElement of buttonElements) {
             if (buttonElement.checked) {
                 gameLavel = buttonElement.value
                 getRenderLevel({ conteinerElement })
-                console.log(gameLavel);
+                console.log(gameLavel)
             }
-
         }
     })
-
-
 }
-
 
 getRender()

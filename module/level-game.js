@@ -1,8 +1,7 @@
-
-const conteinerElement = document.querySelector(".app-game");
+const conteinerElement = document.querySelector('.app-game')
 
 export function getRenderLevel() {
-  const levelHtml = ` <div class="navi">
+    const levelHtml = ` <div class="navi">
     <div class="time">
         <div class="report">
             <p class="minuts">min</p>
@@ -13,6 +12,5 @@ export function getRenderLevel() {
     <button class="start-over">Начать заново</button>
 </div>`
 
-
-conteinerElement.innerHTML = levelHtml
+    conteinerElement.innerHTML = levelHtml
 }
