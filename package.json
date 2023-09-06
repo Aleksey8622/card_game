@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "format": "prettier --write ./src/",
-        "lint:js": "eslint ./module/**/*.js"
+        "lint:js": "eslint ./module/**/*.js",
+        "lint:css": "eslint ./**/*.css"
     },
     "repository": {
         "type": "git",
@@ -18,6 +19,9 @@
         "eslint": "^8.48.0",
         "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-prettier": "^5.0.0",
-        "prettier": "^3.0.3"
+        "prettier": "^3.0.3",
+        "stylelint": "^15.10.3",
+        "stylelint-config-standard": "^34.0.0",
+        "stylelint-prettier": "^4.0.2"
     }
 }
