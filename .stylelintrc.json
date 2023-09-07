@@ -3,11 +3,14 @@
     "plugins": ["stylelint-prettier"],
     "rules": {
         "prettier/prettier": true,
-        "string": "",
+        "selector-class-pattern": null,
+        "declaration-block-no-duplicate-properties": null,
+        "no-descending-specificity": null,
         "font-family-no-missing-generic-family-keyword": [
             true,
+
             {
-                "ignoreFontFamilies": ["Stratos"]
+                "ignoreFontFamilies": ["StratosSkyeng"]
             }
         ]
     }

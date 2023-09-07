@@ -1,8 +1,8 @@
 @font-face {
-    font-family: 'StratosSkyeng';
+    font-family: StratosSkyeng;
     src:
-        url(./fonts/stratosskyengweb-regular.woff) format('woff'),
-        url(./fonts/stratosskyengweb-regular.woff2) format('woff2');
+        url('./fonts/stratosskyengweb-regular.woff') format('woff'),
+        url('./fonts/stratosskyengweb-regular.woff2') format('woff2');
     font-weight: normal;
 }
 
@@ -16,7 +16,7 @@ a {
 }
 
 body {
-    font-family: 'StratosSkyeng', sans-serif;
+    font-family: StratosSkyeng, sans-serif;
     background: #004980;
 }
 
@@ -91,9 +91,7 @@ body {
     background: var(--salad-60, #7ac100);
 }
 
-/*Стили для кнопок выбора сложности с параметром radio
-
-*/
+/* Стили для кнопок выбора сложности с параметром radio */
 
 .radio-toolbar {
     display: flex;
@@ -113,15 +111,10 @@ body {
     letter-spacing: 0.5px;
 }
 
-.radio-toolbar input[type='radio'] {
-    display: none;
-}
-
 .radio-toolbar label {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* display: inline-block; */
     padding: 2px 9px;
     cursor: pointer;
     border: 1px solid #00c2ff;
@@ -140,7 +133,7 @@ body {
     background: #fff;
 }
 
-.radio-toolbar input[type='radio']:checked+label {
+.radio-toolbar input[type='radio']:checked + label {
     background-color: #00c2ff;
     border: 1px solid #00c2ff;
     color: #fff;
@@ -151,9 +144,7 @@ body {
     border: 1px solid #b9ea2c;
 }
 
-/*
-Стили страницы с самой игрой
-*/
+/* Стили страницы с самой игрой */
 
 .navi {
     display: flex;
