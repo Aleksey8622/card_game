@@ -1,15 +1,5 @@
-const conteinerElement = document.querySelector('.app-game')
 
 export let arrCard = [
-    { img: './img/deck-cards/boody/6.png' },
-    { img: './img/deck-cards/boody/7.png' },
-    { img: './img/deck-cards/boody/8.png' },
-    { img: './img/deck-cards/boody/9.png' },
-    { img: './img/deck-cards/boody/10.png' },
-    { img: './img/deck-cards/boody/J.png' },
-    { img: './img/deck-cards/boody/Q.png' },
-    { img: './img/deck-cards/boody/K.png' },
-    { img: './img/deck-cards/boody/A.png' },
     { img: './img/deck-cards/cross/6.png' },
     { img: './img/deck-cards/cross/7.png' },
     { img: './img/deck-cards/cross/8.png' },
@@ -37,18 +27,14 @@ export let arrCard = [
     { img: './img/deck-cards/worms/Q.png' },
     { img: './img/deck-cards/worms/K.png' },
     { img: './img/deck-cards/worms/A.png' },
+    { img: './img/deck-cards/booby/6.png' },
+    { img: './img/deck-cards/booby/7.png' },
+    { img: './img/deck-cards/booby/8.png' },
+    { img: './img/deck-cards/booby/9.png' },
+    { img: './img/deck-cards/booby/10.png' },
+    { img: './img/deck-cards/booby/J.png' },
+    { img: './img/deck-cards/booby/Q.png' },
+    { img: './img/deck-cards/booby/K.png' },
+    { img: './img/deck-cards/booby/A.png' },
 ]
 
-console.log(arrCard)
-export function getRenderCard() {
-    const cardsHtml = arrCard
-        .map((item) => {
-            return ` <div class="card">
-            <img src="${item.img}" alt="">
-        </div>
-        `
-        })
-        .join('')
-
-    conteinerElement.innerHTML = cardsHtml
-}

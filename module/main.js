@@ -1,7 +1,8 @@
-import { getRenderCard } from './helpers.js'
-// import { getRenderLevel } from './level-game.js'
-// import { arrCard } from './helpers.js'
+
+
+import { getRenderCard, getRenderLevel } from './level-game.js'
 const conteinerElement = document.querySelector('.app-game')
+const conteinerCards = document.querySelector(".app-card")
 let gameLavel = ''
 
 export function getRender() {
@@ -20,7 +21,9 @@ export function getRender() {
         </div>
         <button class="button-start">Старт</button>
     </div>
-</div>`
+</div>
+
+`
 
     conteinerElement.innerHTML = blokHtml
 
@@ -32,8 +35,8 @@ export function getRender() {
         for (const buttonElement of buttonElements) {
             if (buttonElement.checked) {
                 gameLavel = buttonElement.value
-                getRenderCard({ conteinerElement })
-                // getRenderLevel({ conteinerElement })
+                getRenderLevel({ conteinerElement })
+                getRenderCard({conteinerCards})
                 console.log(gameLavel)
             }
         }
