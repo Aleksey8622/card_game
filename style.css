@@ -197,7 +197,6 @@ body {
     background: var(--salad-60, #7ac100);
 }
 
-.card{
+.card {
     display: flex;
-    
 }
