@@ -1,5 +1,6 @@
+import { getRenderCard } from './helpers.js'
 import { getRenderLevel } from './level-game.js'
-
+import { arrCard } from './helpers.js'
 const conteinerElement = document.querySelector('.app-game')
 let gameLavel = ''
 
@@ -31,7 +32,8 @@ export function getRender() {
         for (const buttonElement of buttonElements) {
             if (buttonElement.checked) {
                 gameLavel = buttonElement.value
-                getRenderLevel({ conteinerElement })
+                getRenderCard({ conteinerElement })
+                // getRenderLevel({ conteinerElement })
                 console.log(gameLavel)
             }
         }

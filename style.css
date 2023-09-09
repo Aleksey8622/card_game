@@ -196,3 +196,8 @@ body {
     border-radius: 12px;
     background: var(--salad-60, #7ac100);
 }
+
+.card{
+    display: flex;
+    
+}

@@ -10,6 +10,7 @@ export function getRenderLevel() {
         <p class="counter">00.00</p>
     </div>
     <button class="start-over">Начать заново</button>
+   
 </div>`
 
     conteinerElement.innerHTML = levelHtml
