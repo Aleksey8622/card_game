@@ -1,4 +1,3 @@
-
 export let arrCard = [
     { img: './img/deck-cards/cross/6.png' },
     { img: './img/deck-cards/cross/7.png' },
@@ -38,3 +37,42 @@ export let arrCard = [
     { img: './img/deck-cards/booby/A.png' },
 ]
 
+let arrCardShirt = [
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+    { img: './img/deck-cards/shirt/card-shirt.png' },
+]
+console.log(arrCardShirt)
