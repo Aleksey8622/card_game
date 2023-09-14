@@ -1,3 +1,4 @@
+import '../style.css'
 import { getRenderCard, getRenderLevel } from './level-game.js'
 const conteinerElement = document.querySelector('.app-game')
 const conteinerCards = document.querySelector('.app-card')
