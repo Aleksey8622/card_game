@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
-const MiniCssExstractPlugin = require('css-minimizer-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 const isProdaction = process.env.NODE_ENV === 'prodaction'
@@ -12,21 +12,22 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
-                use: [MiniCssExstractPlugin.loader, 'css-loader'],
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resourse',
+                type: 'asset/resource',
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resourse',
+                type: 'asset/resource',
             },
         ],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
         clean: true,
     },
     plugins: [
@@ -34,7 +35,7 @@ module.exports = {
             patterns: [{ from: 'img', to: 'static' }],
         }),
         new HtmlWebpackPlugin({ template: './index.html' }),
-        new MiniCssExstractPlugin(),
+        new MiniCssExtractPlugin(),
     ],
     optimization: {
         minimizer: ['...', new CssMinimizerPlugin()],
