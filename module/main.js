@@ -1,8 +1,8 @@
 import '../style.css'
 import { getRenderCard, getRenderLevel } from './level-game.js'
+export let gameLavel = ''
 const conteinerElement = document.querySelector('.app-game')
 const conteinerCards = document.querySelector('.app-card')
-let gameLavel = ''
 
 export function getRender() {
     let blokHtml = `           <div class="container center">

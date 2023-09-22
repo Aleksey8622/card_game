@@ -105,13 +105,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getRenderCard: () => (/* binding */ getRenderCard),
 /* harmony export */   getRenderLevel: () => (/* binding */ getRenderLevel)
 /* harmony export */ });
-/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers.js */ "./module/helpers.js");
+/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./main.js */ "./module/main.js");
+/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers.js */ "./module/helpers.js");
 
+
+
+let arrCardLevel = []
 
 const conteinerElement = document.querySelector('.app-game')
 
+let counterCard = 0
+
+let cardRandom = _helpers_js__WEBPACK_IMPORTED_MODULE_1__.arrCard.sort(() => Math.random() - 0.5)
+
+if (_main_js__WEBPACK_IMPORTED_MODULE_0__.gameLavel === 'easy') {
+    counterCard = 3
+}
+if (_main_js__WEBPACK_IMPORTED_MODULE_0__.gameLavel === 'medium') {
+    counterCard = 6
+}
+if (_main_js__WEBPACK_IMPORTED_MODULE_0__.gameLavel === 'hard') {
+    counterCard = 9
+}
+
+for (let i = 1; i < counterCard; i++) {
+    arrCardLevel.push(cardRandom[i])
+}
+
+arrCardLevel = arrCardLevel.concat(arrCardLevel)
+arrCardLevel.sort(() => Math.random() - 0.5)
+
 function getRenderCard() {
-    const htmlCards = _helpers_js__WEBPACK_IMPORTED_MODULE_0__.arrCard
+    const htmlCards = arrCardLevel
         .map((card) => {
             return `<img src="${card.img}" alt="card"></img>`
         })
@@ -136,6 +161,68 @@ function getRenderLevel() {
 
     conteinerElement.innerHTML = levelHtml
 }
+
+
+/***/ }),
+
+/***/ "./module/main.js":
+/*!************************!*\
+  !*** ./module/main.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   gameLavel: () => (/* binding */ gameLavel),
+/* harmony export */   getRender: () => (/* binding */ getRender)
+/* harmony export */ });
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../style.css */ "./style.css");
+/* harmony import */ var _level_game_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./level-game.js */ "./module/level-game.js");
+
+
+let gameLavel = ''
+const conteinerElement = document.querySelector('.app-game')
+const conteinerCards = document.querySelector('.app-card')
+
+function getRender() {
+    let blokHtml = `           <div class="container center">
+    <div class="box">
+        <div class="title">Выбери сложность</div>
+        <div class="radio-toolbar">
+            <input type="radio" id="radio1" name="radios" value="easy" checked>
+            <label for="radio1">1</label>
+
+            <input type="radio" id="radio2" name="radios" value="medium">
+            <label for="radio2">2</label>
+
+            <input type="radio" id="radio3" name="radios" value="hard">
+            <label for="radio3">3</label>
+        </div>
+        <button class="button-start">Старт</button>
+    </div>
+</div>
+
+`
+
+    conteinerElement.innerHTML = blokHtml
+
+    const buttonElements = document.getElementsByName('radios')
+    const buttonStart = document.querySelector('.button-start')
+    console.log(buttonElements)
+
+    buttonStart.addEventListener('click', () => {
+        for (const buttonElement of buttonElements) {
+            if (buttonElement.checked) {
+                gameLavel = buttonElement.value
+                ;(0,_level_game_js__WEBPACK_IMPORTED_MODULE_1__.getRenderLevel)({ conteinerElement })
+                ;(0,_level_game_js__WEBPACK_IMPORTED_MODULE_1__.getRenderCard)({ conteinerCards })
+                console.log(gameLavel)
+            }
+        }
+    })
+}
+
+getRender()
 
 
 /***/ }),
@@ -208,66 +295,12 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-/*!************************!*\
-  !*** ./module/main.js ***!
-  \************************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getRender: () => (/* binding */ getRender)
-/* harmony export */ });
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../style.css */ "./style.css");
-/* harmony import */ var _level_game_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./level-game.js */ "./module/level-game.js");
-
-
-const conteinerElement = document.querySelector('.app-game')
-const conteinerCards = document.querySelector('.app-card')
-let gameLavel = ''
-
-function getRender() {
-    let blokHtml = `           <div class="container center">
-    <div class="box">
-        <div class="title">Выбери сложность</div>
-        <div class="radio-toolbar">
-            <input type="radio" id="radio1" name="radios" value="easy" checked>
-            <label for="radio1">1</label>
-
-            <input type="radio" id="radio2" name="radios" value="medium">
-            <label for="radio2">2</label>
-
-            <input type="radio" id="radio3" name="radios" value="hard">
-            <label for="radio3">3</label>
-        </div>
-        <button class="button-start">Старт</button>
-    </div>
-</div>
-
-`
-
-    conteinerElement.innerHTML = blokHtml
-
-    const buttonElements = document.getElementsByName('radios')
-    const buttonStart = document.querySelector('.button-start')
-    console.log(buttonElements)
-
-    buttonStart.addEventListener('click', () => {
-        for (const buttonElement of buttonElements) {
-            if (buttonElement.checked) {
-                gameLavel = buttonElement.value
-                ;(0,_level_game_js__WEBPACK_IMPORTED_MODULE_1__.getRenderLevel)({ conteinerElement })
-                ;(0,_level_game_js__WEBPACK_IMPORTED_MODULE_1__.getRenderCard)({ conteinerCards })
-                console.log(gameLavel)
-            }
-        }
-    })
-}
-
-getRender()
-
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./module/main.js");
+/******/ 	
 /******/ })()
 ;
 //# sourceMappingURL=bundle.js.map

@@ -1,9 +1,33 @@
+import { gameLavel } from './main.js'
 import { arrCard } from './helpers.js'
+
+let arrCardLevel = []
 
 const conteinerElement = document.querySelector('.app-game')
 
+let counterCard = 0
+
+let cardRandom = arrCard.sort(() => Math.random() - 0.5)
+
+if (gameLavel === 'easy') {
+    counterCard = 3
+}
+if (gameLavel === 'medium') {
+    counterCard = 6
+}
+if (gameLavel === 'hard') {
+    counterCard = 9
+}
+
+for (let i = 1; i < counterCard; i++) {
+    arrCardLevel.push(cardRandom[i])
+}
+
+arrCardLevel = arrCardLevel.concat(arrCardLevel)
+arrCardLevel.sort(() => Math.random() - 0.5)
+
 export function getRenderCard() {
-    const htmlCards = arrCard
+    const htmlCards = arrCardLevel
         .map((card) => {
             return `<img src="${card.img}" alt="card"></img>`
         })
