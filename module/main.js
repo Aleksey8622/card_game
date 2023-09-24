@@ -36,6 +36,9 @@ export function getRender() {
                 gameLavel = buttonElement.value
                 getRenderLevel({ conteinerElement })
                 getRenderCard({ conteinerCards })
+                setTimeout(() => {
+                    hidenCard()
+                }, 3000)
                 console.log(gameLavel)
             }
         }
@@ -43,3 +46,45 @@ export function getRender() {
 }
 
 getRender()
+function hidenCard() {
+    const cardElements = document.querySelectorAll('.card')
+    const cardShirtElements = document.querySelectorAll('.cardShirt')
+
+    for (const cardElement of cardElements) {
+        cardElement.classList.add('hiden')
+    }
+
+    for (const cardShirtElement of cardShirtElements) {
+        cardShirtElement.classList.remove('hiden')
+    }
+    compareCard()
+}
+
+function compareCard() {
+    const faceCardElements = document.querySelectorAll('.box-card')
+    let counterCardNamber = 0
+    let cardFirst
+    let cardSecond
+    for (const faceCardElement of faceCardElements) {
+        faceCardElement.addEventListener('click', () => {
+            const cardElementChild = faceCardElement.children
+            cardElementChild[0].classList.remove('hiden')
+            cardElementChild[1].classList.add('hiden')
+            console.log(cardElementChild)
+            counterCardNamber++
+
+            if (counterCardNamber % 2 !== 0) {
+                cardFirst = faceCardElement.children[0].src
+            }
+            if (counterCardNamber % 2 === 0) {
+                cardSecond = faceCardElement.children[0].src
+
+                if (cardFirst === cardSecond) {
+                    alert('Вы выграли хотите пздравляем!')
+                } else {
+                    alert('Вы проиграли попробуйте снова!')
+                }
+            }
+        })
+    }
+}
