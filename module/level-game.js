@@ -36,7 +36,6 @@ export function getRenderCard() {
         .join('')
     const conteinerCards = document.querySelector('.app-card')
     conteinerCards.insertAdjacentHTML('afterbegin', htmlCards)
-
     const cardShirtElements = document.querySelectorAll('.cardShirt')
 
     for (const cardElement of cardShirtElements) {
@@ -46,23 +45,19 @@ export function getRenderCard() {
     const startOverElement = document.querySelector('.start-over')
     console.log(startOverElement)
     startOverElement.addEventListener('click', getRender)
-
-    // console.log(counterGame)
-
-    // const counterGame = document.querySelector('.counter')
-    // let timerId
-    // function launchTimer() {
-    //     timerId = setInterval(() => {
-    //         counterGame.textContent += 1
-    //     }, 1000)
-    // }
-
-    // launchTimer()
+    const counterGame = document.getElementById('timerId')
+    console.log(counterGame)
+    let time = 0
+    function startTimeGame() {
+        let minuts = Math.floor(time / 60)
+        minuts = minuts < 10 ? '0' + minuts : minuts
+        let second = time % 60
+        second = second < 10 ? '0' + second : second
+        counterGame.textContent = `${minuts}.${second}`
+        time++
+    }
+    setInterval(startTimeGame, 1000)
 }
-
-// function stopLaunchTimer() {
-//     clearInterval(timerId)
-// }
 
 export function getRenderLevel() {
     const levelHtml = ` <div class="navi center-card">
@@ -71,7 +66,7 @@ export function getRenderLevel() {
                 <p class="minuts">min</p>
                 <p class="seconds">sek</p>
             </div>
-            <div class="counter">00.00</div>
+            <div id="timerId" class="counter">00.00</div>
         </div>
         <button class="start-over">Начать заново</button>
     </div>
@@ -80,3 +75,5 @@ export function getRenderLevel() {
 
     conteinerElement.innerHTML = levelHtml
 }
+const counterElement = document.querySelector('.counter')
+console.log(counterElement)
