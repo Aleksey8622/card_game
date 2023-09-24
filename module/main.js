@@ -28,7 +28,7 @@ export function getRender() {
 
     const buttonElements = document.getElementsByName('radios')
     const buttonStart = document.querySelector('.button-start')
-    console.log(buttonElements)
+    console.log(buttonStart)
 
     buttonStart.addEventListener('click', () => {
         for (const buttonElement of buttonElements) {
@@ -46,6 +46,7 @@ export function getRender() {
 }
 
 getRender()
+
 function hidenCard() {
     const cardElements = document.querySelectorAll('.card')
     const cardShirtElements = document.querySelectorAll('.cardShirt')

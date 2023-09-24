@@ -1,5 +1,5 @@
 import { arrCard } from './helpers.js'
-import { gameLavel } from './main.js'
+import { gameLavel, getRender } from './main.js'
 const conteinerElement = document.querySelector('.app-game')
 
 let arrCardLevel = []
@@ -42,7 +42,28 @@ export function getRenderCard() {
     for (const cardElement of cardShirtElements) {
         cardElement.classList.add('hiden')
     }
+
+    const startOverElement = document.querySelector('.start-over')
+    console.log(startOverElement)
+    startOverElement.addEventListener('click', getRender)
+
+    // console.log(counterGame)
+
+    // const counterGame = document.querySelector('.counter')
+    // let timerId
+    // function launchTimer() {
+    //     timerId = setInterval(() => {
+    //         counterGame.textContent += 1
+    //     }, 1000)
+    // }
+
+    // launchTimer()
 }
+
+// function stopLaunchTimer() {
+//     clearInterval(timerId)
+// }
+
 export function getRenderLevel() {
     const levelHtml = ` <div class="navi center-card">
         <div class="time">
@@ -50,17 +71,12 @@ export function getRenderLevel() {
                 <p class="minuts">min</p>
                 <p class="seconds">sek</p>
             </div>
-            <p class="counter">00.00</p>
+            <div class="counter">00.00</div>
         </div>
         <button class="start-over">Начать заново</button>
     </div>
     <div class="app-card center-card"> </div>
     `
-    // const startOverElement = document.querySelector('.start-over')
-    // console.log(startOverElement)
+
     conteinerElement.innerHTML = levelHtml
 }
-
-// startOverElement.addEventListener('click', () => {
-//     console.log(1)
-// })
