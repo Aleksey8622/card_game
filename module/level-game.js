@@ -45,20 +45,10 @@ export function getRenderCard() {
     const startOverElement = document.querySelector('.start-over')
     console.log(startOverElement)
     startOverElement.addEventListener('click', getRender)
-    const counterGame = document.getElementById('timerId')
-    console.log(counterGame)
-    let time = 0
-    function startTimeGame() {
-        let minuts = Math.floor(time / 60)
-        minuts = minuts < 10 ? '0' + minuts : minuts
-        let second = time % 60
-        second = second < 10 ? '0' + second : second
-        counterGame.textContent = `${minuts}.${second}`
-        time++
-    }
-    setInterval(startTimeGame, 1000)
 }
-
+export let timerId
+let counterGame
+export let time = 0
 export function getRenderLevel() {
     const levelHtml = ` <div class="navi center-card">
         <div class="time">
@@ -74,6 +64,30 @@ export function getRenderLevel() {
     `
 
     conteinerElement.innerHTML = levelHtml
+
+    counterGame = document.getElementById('timerId')
+    console.log(counterGame)
+
+    timerId = setInterval(() => {
+        let minuts = Math.floor(time / 60)
+        minuts = minuts < 10 ? '0' + minuts : minuts
+        let second = time % 60
+        second = second < 10 ? '0' + second : second
+        counterGame.textContent = `${minuts}.${second}`
+        time++
+    }, 1000)
+
+    // function startTimeGame() {
+    //     let minuts = Math.floor(time / 60)
+    //     minuts = minuts < 10 ? '0' + minuts : minuts
+    //     let second = time % 60
+    //     second = second < 10 ? '0' + second : second
+    //     counterGame.textContent = `${minuts}.${second}`
+    //     time++
+    // }
+    // setInterval(startTimeGame, 1000)
 }
-const counterElement = document.querySelector('.counter')
-console.log(counterElement)
+// const counterElement = document.querySelector('.counter')
+// console.log(counterGame)
+// const cardA = document.querySelectorAll('.card')
+// console.log(cardA)
