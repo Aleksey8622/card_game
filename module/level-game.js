@@ -73,11 +73,28 @@ export function getRenderLevel() {
         let second = time % 60
         second = second < 10 ? '0' + second : second
         counterGame.textContent = `${minuts}.${second}`
-        totalTime = `${minuts} минут, ${second} секунд `
+        totalTime = `${minuts}.${second}`
         time++
     }, 1000)
 }
 
+export function getRenderEndGame() {
+    const endGame = `    <div class="box-end">
+    <div class="result-game">
+      <img
+        class="celebration"
+        src="./static/celebration.png"
+        alt="celebration"
+      />
+      <div class="title-game">Вы выиграли!</div>
+      <div class="time-text">Затраченное время:</div>
+      <div class="time-game">${totalTime}</div>
+      <button class="button-game">Играть снова</button>
+    </div>
+  </div>`
+
+    conteinerElement.innerHTML = endGame
+}
 // const counterElement = document.querySelector('.counter')
 // console.log(counterGame)
 // const cardA = document.querySelectorAll('.card')

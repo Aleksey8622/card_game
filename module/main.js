@@ -3,8 +3,8 @@ import {
     getRenderCard,
     getRenderLevel,
     arrCardLevel,
-    timerId,
     totalTime,
+    getRenderEndGame,
 } from './level-game.js'
 export let gameLavel = ''
 const conteinerElement = document.querySelector('.app-game')
@@ -98,8 +98,9 @@ function compareCard() {
                 }
             }
             if (countNamder === arrCardLevel.length / 2) {
-                clearInterval(timerId)
-                alert(`Вы выграли пздравляем! Время игры: ${totalTime}`)
+                getRenderEndGame()
+                // clearInterval(timerId)
+                // alert(`Вы выграли пздравляем! Время игры: ${totalTime}`)
             }
         })
     }
