@@ -1,5 +1,11 @@
 import '../style.css'
-import { getRenderCard, getRenderLevel, timerId, time } from './level-game.js'
+import {
+    getRenderCard,
+    getRenderLevel,
+    arrCardLevel,
+    timerId,
+    totalTime,
+} from './level-game.js'
 export let gameLavel = ''
 const conteinerElement = document.querySelector('.app-game')
 const conteinerCards = document.querySelector('.app-card')
@@ -39,6 +45,7 @@ export function getRender() {
                 setTimeout(() => {
                     hidenCard()
                 }, 5000)
+
                 console.log(gameLavel)
             }
         }
@@ -66,6 +73,7 @@ function compareCard() {
     let counterCardNamber = 0
     let cardFirst
     let cardSecond
+    let countNamder = 0
     for (const faceCardElement of faceCardElements) {
         faceCardElement.addEventListener('click', () => {
             const cardElementChild = faceCardElement.children
@@ -81,11 +89,17 @@ function compareCard() {
                 cardSecond = faceCardElement.children[0].src
 
                 if (cardFirst === cardSecond) {
-                    clearInterval(timerId)
-                    alert(`Вы выграли пздравляем! Время игры: ${time}`)
+                    countNamder++
                 } else {
-                    alert('Вы проиграли попробуйте снова!')
+                    alert(
+                        `Вы проиграли попробуйте снова! Время игры: ${totalTime}`,
+                    )
+                    getRender()
                 }
+            }
+            if (countNamder === arrCardLevel.length / 2) {
+                clearInterval(timerId)
+                alert(`Вы выграли пздравляем! Время игры: ${totalTime}`)
             }
         })
     }

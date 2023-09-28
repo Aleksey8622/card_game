@@ -1,8 +1,10 @@
 import { arrCard } from './helpers.js'
 import { gameLavel, getRender } from './main.js'
 const conteinerElement = document.querySelector('.app-game')
-
-let arrCardLevel = []
+export let time
+export let timerId
+export let totalTime
+export let arrCardLevel = []
 export function getRenderCard() {
     let counterCard = 0
 
@@ -46,9 +48,7 @@ export function getRenderCard() {
     console.log(startOverElement)
     startOverElement.addEventListener('click', getRender)
 }
-export let timerId
-let counterGame
-export let time = 0
+
 export function getRenderLevel() {
     const levelHtml = ` <div class="navi center-card">
         <div class="time">
@@ -64,29 +64,20 @@ export function getRenderLevel() {
     `
 
     conteinerElement.innerHTML = levelHtml
-
-    counterGame = document.getElementById('timerId')
+    const counterGame = document.getElementById('timerId')
     console.log(counterGame)
-
+    time = 0
     timerId = setInterval(() => {
         let minuts = Math.floor(time / 60)
         minuts = minuts < 10 ? '0' + minuts : minuts
         let second = time % 60
         second = second < 10 ? '0' + second : second
         counterGame.textContent = `${minuts}.${second}`
+        totalTime = `${minuts} минут, ${second} секунд `
         time++
     }, 1000)
-
-    // function startTimeGame() {
-    //     let minuts = Math.floor(time / 60)
-    //     minuts = minuts < 10 ? '0' + minuts : minuts
-    //     let second = time % 60
-    //     second = second < 10 ? '0' + second : second
-    //     counterGame.textContent = `${minuts}.${second}`
-    //     time++
-    // }
-    // setInterval(startTimeGame, 1000)
 }
+
 // const counterElement = document.querySelector('.counter')
 // console.log(counterGame)
 // const cardA = document.querySelectorAll('.card')
