@@ -46,7 +46,9 @@ export function getRenderCard() {
 
     const startOverElement = document.querySelector('.start-over')
     console.log(startOverElement)
-    startOverElement.addEventListener('click', getRender)
+    startOverElement.addEventListener('click', () => {
+        getRender()
+    })
 }
 
 export function getRenderLevel() {
@@ -94,7 +96,30 @@ export function getRenderEndGame() {
   </div>`
 
     conteinerElement.innerHTML = endGame
+    const buttonRestartElement = document.querySelector('.button-game')
+    buttonRestartElement.addEventListener('click', getRender)
 }
+
+export function getRenderLostGame() {
+    const lostGame = `<div class="box-end">
+    <div class="result-game">
+      <img
+        class="celebration"
+        src="./static/dead.png"
+        alt="celebration"
+      />
+      <div class="title-game">Вы проиграли!</div>
+      <div class="time-text">Затраченное время:</div>
+      <div class="time-game">${totalTime}</div>
+      <button class="button-game">Играть снова</button>
+    </div>
+  </div>`
+
+    conteinerElement.innerHTML = lostGame
+    const buttonRestartElement = document.querySelector('.button-game')
+    buttonRestartElement.addEventListener('click', getRender)
+}
+
 // const counterElement = document.querySelector('.counter')
 // console.log(counterGame)
 // const cardA = document.querySelectorAll('.card')
