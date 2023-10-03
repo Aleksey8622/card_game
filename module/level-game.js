@@ -5,6 +5,7 @@ export let time
 export let timerId
 export let totalTime
 export let arrCardLevel = []
+
 export function getRenderCard() {
     let counterCard = 0
 
@@ -43,12 +44,6 @@ export function getRenderCard() {
     for (const cardElement of cardShirtElements) {
         cardElement.classList.add('hiden')
     }
-
-    const startOverElement = document.querySelector('.start-over')
-    console.log(startOverElement)
-    startOverElement.addEventListener('click', () => {
-        getRender()
-    })
 }
 
 export function getRenderLevel() {
@@ -78,6 +73,13 @@ export function getRenderLevel() {
         totalTime = `${minuts}.${second}`
         time++
     }, 1000)
+
+    const startOverElement = document.querySelector('.start-over')
+    startOverElement.addEventListener('click', () => {
+        arrCardLevel.splice(0, arrCardLevel.length)
+        getRender()
+    })
+    console.log(startOverElement)
 }
 
 export function getRenderEndGame() {
@@ -97,7 +99,10 @@ export function getRenderEndGame() {
 
     conteinerElement.innerHTML = endGame
     const buttonRestartElement = document.querySelector('.button-game')
-    buttonRestartElement.addEventListener('click', getRender)
+    buttonRestartElement.addEventListener('click', () => {
+        arrCardLevel.splice(0, arrCardLevel.length)
+        getRender()
+    })
 }
 
 export function getRenderLostGame() {
@@ -117,7 +122,10 @@ export function getRenderLostGame() {
 
     conteinerElement.innerHTML = lostGame
     const buttonRestartElement = document.querySelector('.button-game')
-    buttonRestartElement.addEventListener('click', getRender)
+    buttonRestartElement.addEventListener('click', () => {
+        arrCardLevel.splice(0, arrCardLevel.length)
+        getRender()
+    })
 }
 
 // const counterElement = document.querySelector('.counter')

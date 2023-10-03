@@ -5,6 +5,7 @@ import {
     arrCardLevel,
     getRenderEndGame,
     getRenderLostGame,
+    timerId,
 } from './level-game.js'
 export let gameLavel = ''
 const conteinerElement = document.querySelector('.app-game')
@@ -50,6 +51,7 @@ export function getRender() {
             }
         }
     })
+    clearInterval(timerId)
 }
 
 getRender()
@@ -74,7 +76,7 @@ function compareCard() {
     let cardFirst
     let cardSecond
     let countNamder = 0
-    // let counterLost = 0
+    let counterLost = 0
     for (const faceCardElement of faceCardElements) {
         faceCardElement.addEventListener('click', () => {
             const cardElementChild = faceCardElement.children
@@ -92,14 +94,22 @@ function compareCard() {
                 if (cardFirst === cardSecond) {
                     countNamder++
                     console.log(countNamder)
-                } else {
-                    getRenderLostGame()
+                    if (countNamder === arrCardLevel.length / 2) {
+                        clearInterval(timerId)
+                        getRenderEndGame()
+                    }
                 }
-            }
-            if (countNamder === arrCardLevel.length / 2) {
-                getRenderEndGame()
-                // clearInterval(timerId)
-                // alert(`Вы выграли пздравляем! Время игры: ${totalTime}`)
+                if (cardFirst !== cardSecond) {
+                    counterLost++
+                    console.log(counterLost)
+                    if (counterLost % 2 === 0) {
+                        clearInterval(timerId)
+                        getRenderLostGame()
+                    }
+                }
+                // else {
+                //     getRenderLostGame()
+                // }
             }
         })
     }
