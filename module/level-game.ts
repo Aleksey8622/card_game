@@ -2,13 +2,13 @@ import { arrCard } from './helpers'
 import { gameLavel, getRender, countNumber, counterLost } from './main'
 const conteinerElement = document.querySelector('.app-game') as HTMLElement
 export let timerId: NodeJS.Timeout
-export let totalTime: String | Number
+export let totalTime: string | number
 export let arrCardLevel: { img: string }[] = []
 
 export function getRenderCard() {
     let counterCard = 0
 
-    let cardRandom = arrCard.sort(() => Math.random() - 0.5)
+    const cardRandom = arrCard.sort(() => Math.random() - 0.5)
     // console.log(cardRandom)
     if (gameLavel === 'easy') {
         counterCard = 3
@@ -43,12 +43,12 @@ export function getRenderCard() {
     const cardShirtElements = document.querySelectorAll(
         '.cardShirt',
     ) as NodeListOf<Element>
-    // cardShirtElements.forEach((el) => {
-    //     el.classList.add('hiden')
-    // })
-    for (const cardElement of cardShirtElements) {
-        cardElement.classList.add('hiden')
-    }
+    cardShirtElements.forEach((el) => {
+        el.classList.add('hiden')
+    })
+    // for (const cardElement of cardShirtElements) {
+    //     cardElement.classList.add('hiden')
+    // }
 }
 
 export function getRenderLevel() {
@@ -72,9 +72,9 @@ export function getRenderLevel() {
     console.log(counterGame)
     let time: number = 0
     timerId = setInterval(() => {
-        let minuts: number | String = Math.floor(time / 60)
+        let minuts: number | string = Math.floor(time / 60)
         minuts = minuts < 10 ? '0' + minuts : minuts
-        let second: number | String = time % 60
+        let second: number | string = time % 60
         second = second < 10 ? '0' + second : second
         counterGame.textContent = `${minuts}.${second}`
         totalTime = `${minuts}.${second}`

@@ -4,13 +4,22 @@
         "es6": true,
         "node": true
     },
-    "extends": ["eslint:recommended", "prettier"],
-    "plugins": ["prettier"],
+    "extends": [
+        "eslint:recommended",
+        "prettier",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": ["prettier", "@typescript-eslint"],
+
     "parserOptions": {
         "ecmaVersion": 2023,
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": "./tsconfig.json",
+        "parser": ["@typescript-eslint/parser", "@babel/eslint-parser"],
+        "root": true
     },
     "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
         "prettier/prettier": "error",
         "camelcase": ["error"],
         "eqeqeq": ["error", "always"]

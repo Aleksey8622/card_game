@@ -6,7 +6,7 @@ import {
     getRenderEndGame,
     timerId,
 } from './level-game'
-export let gameLavel: String = ''
+export let gameLavel: string = ''
 export let countNumber: number = 0
 export let counterLost: number = 0
 const conteinerElement = document.querySelector('.app-game')
@@ -14,7 +14,7 @@ const conteinerElement = document.querySelector('.app-game')
 // const conteinerCards = document.querySelector('.app-card')
 
 export function getRender() {
-    let blokHtml = `           <div class="container center">
+    const blokHtml = `           <div class="container center">
     <div class="box">
         <div class="title">Выбери сложность</div>
         <div class="radio-toolbar">
@@ -43,18 +43,28 @@ export function getRender() {
     console.log(buttonStart)
 
     buttonStart.addEventListener('click', () => {
-        for (const buttonElement of buttonElements) {
-            if (buttonElement.checked) {
-                gameLavel = buttonElement.value
+        // for (const buttonElement of buttonElements) {
+        //     if (buttonElement.checked) {
+        //         gameLavel = buttonElement.value
+        //         getRenderLevel()
+        //         getRenderCard()
+        //         setTimeout(() => {
+        //             hidenCard()
+        //         }, 5000)
+
+        //         console.log(gameLavel)
+        //     }
+        // }
+        buttonElements.forEach((el) => {
+            if (el.checked) {
+                gameLavel = el.value
                 getRenderLevel()
                 getRenderCard()
                 setTimeout(() => {
                     hidenCard()
                 }, 5000)
-
-                console.log(gameLavel)
             }
-        }
+        })
     })
     clearInterval(timerId)
 }
@@ -69,19 +79,19 @@ function hidenCard() {
         '.cardShirt',
     ) as NodeListOf<Element>
 
-    // cardElements.forEach((el) => {
-    //     el.classList.add('hiden')
-    // })
+    cardElements.forEach((el) => {
+        el.classList.add('hiden')
+    })
 
-    for (const cardElement of cardElements) {
-        cardElement.classList.add('hiden')
-    }
-    // cardShirtElements.forEach((el) => {
-    //     el.classList.remove('hiden')
-    // })
-    for (const cardShirtElement of cardShirtElements) {
-        cardShirtElement.classList.remove('hiden')
-    }
+    // for (const cardElement of cardElements) {
+    //     cardElement.classList.add('hiden')
+    // }
+    cardShirtElements.forEach((el) => {
+        el.classList.remove('hiden')
+    })
+    // for (const cardShirtElement of cardShirtElements) {
+    //     cardShirtElement.classList.remove('hiden')
+    // }
     compareCard()
 }
 
@@ -128,4 +138,22 @@ function compareCard() {
             }
         })
     }
+    // faceCardElements.forEach((el) => {
+    //     el.addEventListener('click', () => {
+    //         const cardElementChild = el.children
+    //         cardElementChild[0].classList.remove('hiden')
+    //         cardElementChild[1].classList.add('hiden')
+    //         counterCardNamber++
+
+    //         if (counterCardNamber % 2 !== 0) {
+    //             cardFirst = el.children[0]
+    //         }
+    //         if (counterCardNamber % 2 === 0) {
+    //             cardSecond = el.children[0]
+    //             if (cardFirst === cardSecond) {
+    //                 countNumber++
+    //             }
+    //         }
+    //     })
+    // })
 }

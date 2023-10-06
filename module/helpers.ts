@@ -1,4 +1,4 @@
-export let arrCard = [
+export const arrCard = [
     { img: './static/deck-cards/cross/6.png' },
     { img: './static/deck-cards/cross/7.png' },
     { img: './static/deck-cards/cross/8.png' },
