@@ -4,12 +4,14 @@ import {
     getRenderLevel,
     arrCardLevel,
     getRenderEndGame,
-    getRenderLostGame,
     timerId,
-} from './level-game.js'
-export let gameLavel = ''
+} from './level-game'
+export let gameLavel: String = ''
+export let countNumber: number = 0
+export let counterLost: number = 0
 const conteinerElement = document.querySelector('.app-game')
-const conteinerCards = document.querySelector('.app-card')
+
+// const conteinerCards = document.querySelector('.app-card')
 
 export function getRender() {
     let blokHtml = `           <div class="container center">
@@ -30,19 +32,22 @@ export function getRender() {
 </div>
 
 `
+    if (conteinerElement) {
+        conteinerElement.innerHTML = blokHtml
+    }
 
-    conteinerElement.innerHTML = blokHtml
-
-    const buttonElements = document.getElementsByName('radios')
-    const buttonStart = document.querySelector('.button-start')
+    const buttonElements = document.getElementsByName(
+        'radios',
+    ) as NodeListOf<HTMLInputElement>
+    const buttonStart = document.querySelector('.button-start') as HTMLElement
     console.log(buttonStart)
 
     buttonStart.addEventListener('click', () => {
         for (const buttonElement of buttonElements) {
             if (buttonElement.checked) {
                 gameLavel = buttonElement.value
-                getRenderLevel({ conteinerElement })
-                getRenderCard({ conteinerCards })
+                getRenderLevel()
+                getRenderCard()
                 setTimeout(() => {
                     hidenCard()
                 }, 5000)
@@ -57,13 +62,23 @@ export function getRender() {
 getRender()
 
 function hidenCard() {
-    const cardElements = document.querySelectorAll('.card')
-    const cardShirtElements = document.querySelectorAll('.cardShirt')
+    const cardElements = document.querySelectorAll(
+        '.card',
+    ) as NodeListOf<Element>
+    const cardShirtElements = document.querySelectorAll(
+        '.cardShirt',
+    ) as NodeListOf<Element>
+
+    // cardElements.forEach((el) => {
+    //     el.classList.add('hiden')
+    // })
 
     for (const cardElement of cardElements) {
         cardElement.classList.add('hiden')
     }
-
+    // cardShirtElements.forEach((el) => {
+    //     el.classList.remove('hiden')
+    // })
     for (const cardShirtElement of cardShirtElements) {
         cardShirtElement.classList.remove('hiden')
     }
@@ -73,11 +88,11 @@ function hidenCard() {
 function compareCard() {
     const faceCardElements = document.querySelectorAll('.box-card')
     let counterCardNamber = 0
-    let cardFirst
+    let cardFirst: string
     let cardSecond
-    let countNamder = 0
-    let counterLost = 0
-    for (const faceCardElement of faceCardElements) {
+    countNumber = 0
+    counterLost = 0
+    for (const faceCardElement of faceCardElements as any) {
         faceCardElement.addEventListener('click', () => {
             const cardElementChild = faceCardElement.children
             cardElementChild[0].classList.remove('hiden')
@@ -92,9 +107,9 @@ function compareCard() {
                 cardSecond = faceCardElement.children[0].src
 
                 if (cardFirst === cardSecond) {
-                    countNamder++
-                    console.log(countNamder)
-                    if (countNamder === arrCardLevel.length / 2) {
+                    countNumber++
+                    console.log(countNumber)
+                    if (countNumber === arrCardLevel.length / 2) {
                         clearInterval(timerId)
                         getRenderEndGame()
                     }
@@ -104,7 +119,7 @@ function compareCard() {
                     console.log(counterLost)
                     if (counterLost % 2 === 0) {
                         clearInterval(timerId)
-                        getRenderLostGame()
+                        getRenderEndGame()
                     }
                 }
                 // else {

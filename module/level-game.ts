@@ -1,16 +1,15 @@
-import { arrCard } from './helpers.js'
-import { gameLavel, getRender } from './main.js'
-const conteinerElement = document.querySelector('.app-game')
-export let time
-export let timerId
-export let totalTime
-export let arrCardLevel = []
+import { arrCard } from './helpers'
+import { gameLavel, getRender, countNumber, counterLost } from './main'
+const conteinerElement = document.querySelector('.app-game') as HTMLElement
+export let timerId: NodeJS.Timeout
+export let totalTime: String | Number
+export let arrCardLevel: { img: string }[] = []
 
 export function getRenderCard() {
     let counterCard = 0
 
     let cardRandom = arrCard.sort(() => Math.random() - 0.5)
-    console.log(cardRandom)
+    // console.log(cardRandom)
     if (gameLavel === 'easy') {
         counterCard = 3
     }
@@ -23,7 +22,7 @@ export function getRenderCard() {
 
     for (let i = 0; i < counterCard; i++) {
         arrCardLevel.push(cardRandom[i])
-        // console.log(arrCardLevel)
+        console.log(arrCardLevel)
     }
     // console.log(arrCardLevel)
     arrCardLevel = arrCardLevel.concat(arrCardLevel)
@@ -38,9 +37,15 @@ export function getRenderCard() {
         })
         .join('')
     const conteinerCards = document.querySelector('.app-card')
-    conteinerCards.insertAdjacentHTML('afterbegin', htmlCards)
-    const cardShirtElements = document.querySelectorAll('.cardShirt')
-
+    if (conteinerCards) {
+        conteinerCards.insertAdjacentHTML('afterbegin', htmlCards)
+    }
+    const cardShirtElements = document.querySelectorAll(
+        '.cardShirt',
+    ) as NodeListOf<Element>
+    // cardShirtElements.forEach((el) => {
+    //     el.classList.add('hiden')
+    // })
     for (const cardElement of cardShirtElements) {
         cardElement.classList.add('hiden')
     }
@@ -60,21 +65,25 @@ export function getRenderLevel() {
     <div class="app-card center-card"> </div>
     `
 
-    conteinerElement.innerHTML = levelHtml
-    const counterGame = document.getElementById('timerId')
+    if (conteinerElement) {
+        conteinerElement.innerHTML = levelHtml
+    }
+    const counterGame = document.getElementById('timerId') as HTMLElement
     console.log(counterGame)
-    time = 0
+    let time: number = 0
     timerId = setInterval(() => {
-        let minuts = Math.floor(time / 60)
+        let minuts: number | String = Math.floor(time / 60)
         minuts = minuts < 10 ? '0' + minuts : minuts
-        let second = time % 60
+        let second: number | String = time % 60
         second = second < 10 ? '0' + second : second
         counterGame.textContent = `${minuts}.${second}`
         totalTime = `${minuts}.${second}`
         time++
     }, 1000)
 
-    const startOverElement = document.querySelector('.start-over')
+    const startOverElement = document.querySelector(
+        '.start-over',
+    ) as HTMLElement
     startOverElement.addEventListener('click', () => {
         arrCardLevel.splice(0, arrCardLevel.length)
         getRender()
@@ -97,36 +106,63 @@ export function getRenderEndGame() {
     </div>
   </div>`
 
-    conteinerElement.innerHTML = endGame
-    const buttonRestartElement = document.querySelector('.button-game')
-    buttonRestartElement.addEventListener('click', () => {
-        arrCardLevel.splice(0, arrCardLevel.length)
-        getRender()
-    })
-}
-
-export function getRenderLostGame() {
     const lostGame = `<div class="box-end">
-    <div class="result-game">
-      <img
-        class="celebration"
-        src="./static/dead.png"
-        alt="celebration"
-      />
-      <div class="title-game">Вы проиграли!</div>
-      <div class="time-text">Затраченное время:</div>
-      <div class="time-game">${totalTime}</div>
-      <button class="button-game">Играть снова</button>
-    </div>
-  </div>`
+  <div class="result-game">
+    <img
+      class="celebration"
+      src="./static/dead.png"
+      alt="celebration"
+    />
+    <div class="title-game">Вы проиграли!</div>
+    <div class="time-text">Затраченное время:</div>
+    <div class="time-game">${totalTime}</div>
+    <button class="button-game">Играть снова</button>
+  </div>
+</div>`
 
-    conteinerElement.innerHTML = lostGame
-    const buttonRestartElement = document.querySelector('.button-game')
+    if (conteinerElement) {
+        if (countNumber === arrCardLevel.length / 2) {
+            conteinerElement.innerHTML = endGame
+        } else if (counterLost % 2 === 0) {
+            conteinerElement.innerHTML = lostGame
+        }
+    }
+
+    const buttonRestartElement = document.querySelector(
+        '.button-game',
+    ) as HTMLElement
     buttonRestartElement.addEventListener('click', () => {
         arrCardLevel.splice(0, arrCardLevel.length)
         getRender()
     })
 }
+
+// export function getRenderLostGame() {
+//     const lostGame = `<div class="box-end">
+//     <div class="result-game">
+//       <img
+//         class="celebration"
+//         src="./static/dead.png"
+//         alt="celebration"
+//       />
+//       <div class="title-game">Вы проиграли!</div>
+//       <div class="time-text">Затраченное время:</div>
+//       <div class="time-game">${totalTime}</div>
+//       <button class="button-game">Играть снова</button>
+//     </div>
+//   </div>`
+
+//     if (conteinerElement) {
+//         conteinerElement.innerHTML = lostGame
+//     }
+//     const buttonRestartElement = document.querySelector(
+//         '.button-game',
+//     ) as HTMLElement
+//     buttonRestartElement.addEventListener('click', () => {
+//         arrCardLevel.splice(0, arrCardLevel.length)
+//         getRender()
+//     })
+// }
 
 // const counterElement = document.querySelector('.counter')
 // console.log(counterGame)
