@@ -1,0 +1,214 @@
+@font-face {
+    font-family: StratosSkyeng;
+    src:
+        url('./fonts/stratosskyengweb-regular.woff') format('woff'),
+        url('./fonts/stratosskyengweb-regular.woff2') format('woff2');
+    font-weight: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: StratosSkyeng, sans-serif;
+    background: #004980;
+}
+
+.center {
+    padding-left: calc(50% - 240px);
+    padding-right: calc(50% - 240px);
+}
+
+.center-card {
+    padding-left: calc(50% - 463px);
+    padding-right: calc(50% - 463px);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    padding-top: 158px;
+    padding-bottom: 157px;
+    min-height: 774px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 48px;
+    width: 480px;
+    height: 459px;
+    border-radius: 12px;
+    background: #c2f5ff;
+}
+
+.title {
+    width: 208px;
+    height: 96px;
+    color: #004980;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 48px;
+    padding-top: 52px;
+    text-align: center;
+}
+
+/* .radio-button {
+    width: 97px;
+    height: 98px;
+    flex-shrink: 0;
+    color: #0080C1;
+    text-align: center;
+    font-family: StratosSkyeng;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 72px;
+    border-radius: 12px;
+    background: #FFF;
+
+} */
+
+.button-start {
+    display: flex;
+    width: 246px;
+    height: 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    color: #fff;
+    text-align: center;
+    font-variant-numeric: lining-nums proportional-nums;
+    border-radius: 12px;
+    background: var(--salad-60, #7ac100);
+}
+
+/* Стили для кнопок выбора сложности с параметром radio */
+
+.radio-toolbar {
+    display: flex;
+    column-gap: 26px;
+    justify-content: center;
+}
+
+.radio-toolbar input[type='radio'] {
+    display: none;
+}
+
+.prod_checbox strong {
+    font-size: 14px;
+    color: #333;
+    display: inline-block;
+    margin-right: 10px;
+    letter-spacing: 0.5px;
+}
+
+.radio-toolbar label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 9px;
+    cursor: pointer;
+    border: 1px solid #00c2ff;
+    border-radius: 5px;
+    width: 97px;
+    height: 98px;
+    flex-shrink: 0;
+    color: #0080c1;
+    text-align: center;
+    font-family: StratosSkyeng;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 72px;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.radio-toolbar input[type='radio']:checked + label {
+    background-color: #00c2ff;
+    border: 1px solid #00c2ff;
+    color: #fff;
+}
+
+.radio-toolbar label:hover {
+    background-color: #b9ea2c;
+    border: 1px solid #b9ea2c;
+}
+
+/* Стили страницы с самой игрой */
+
+.navi {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 975px;
+    margin-top: 22px;
+
+    /* padding-left: 23px;
+    padding-right: 23px; */
+}
+
+.report {
+    width: 155px;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 57px;
+    color: #fff;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.counter {
+    width: 155px;
+    color: #fff;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 72px;
+}
+
+.start-over {
+    display: flex;
+    width: 246px;
+    height: 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    color: #fff;
+    text-align: center;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: StratosSkyeng;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    border-radius: 12px;
+    background: var(--salad-60, #7ac100);
+}
+
+.app-card {
+    width: 975px;
+    padding-top: 40px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
