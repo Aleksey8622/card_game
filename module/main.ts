@@ -102,7 +102,7 @@ function compareCard() {
     let cardSecond
     countNumber = 0
     counterLost = 0
-    for (const faceCardElement of faceCardElements as any) {
+    for (const faceCardElement of faceCardElements) {
         faceCardElement.addEventListener('click', () => {
             const cardElementChild = faceCardElement.children
             cardElementChild[0].classList.remove('hiden')
@@ -111,10 +111,12 @@ function compareCard() {
             counterCardNamber++
 
             if (counterCardNamber % 2 !== 0) {
-                cardFirst = faceCardElement.children[0].src
+                cardFirst = (faceCardElement.children[0] as HTMLImageElement)
+                    .src
             }
             if (counterCardNamber % 2 === 0) {
-                cardSecond = faceCardElement.children[0].src
+                cardSecond = (faceCardElement.children[0] as HTMLImageElement)
+                    .src
 
                 if (cardFirst === cardSecond) {
                     countNumber++
